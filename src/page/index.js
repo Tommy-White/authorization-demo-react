@@ -4,7 +4,7 @@ import Home from './home';
 import User from './user';
 
 
-function AppRouter() {
+function AppRouter({owned}) {
   return (
     <Router>
       <div>
@@ -20,7 +20,8 @@ function AppRouter() {
         </nav>
 
         <Route path="/" exact component={Home} />
-        <Route path="/users/" component={User} />
+        <Route path="/users/"
+          component={() => <User allowed={['user', 'admin']}  owned={owned}/>} />
       </div>
     </Router>
   );
